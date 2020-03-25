@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+</head>
+<style>
+#searchinput {
+  width:  50%;
+  height: 30px;
+  font-size:14pt;
+  border-radius: 14px;
+  margin-left: 20%;
+}
+
+#searchbutton {
+  height: 35px;
+  font-size: 15pt;
+  color: white;
+  background-color: black;
+}
+
+#previous {
+  margin-left: 40%;
+  height: 30px;
+  width: 100px;
+  background: #2D3142;
+  border: 5px;
+  color: white;
+}
+
+#next {
+  height: 30px;
+  width: 100px;
+  background:  #2D3142;
+  border: 5px;
+  color: white;
+}
+#ddlitemslist{
+  width: 100px;
+  background: #2D3142;
+  color: white;
+  border: 5px;
+  height: 30px;
+  margin-left: 45%
+}
+
+</style>
+<body>
+<select id='ddlitemslist'></select>
+<br/>
+<br/>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<br/><br/>
+<button type="button" name="button" id="previous">Previous</button>
+<button type="button" name="button"id="next">Next</button>
+<br>
+<br/>
+<input id="searchinput"></input>
+<button type="button" name="button" id="searchbutton" >Search</button>
+<br/>
+<br/>
+<div id="chartContainer1" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script type="text/javascript" src="graph.js"></script>
+</body>
+</html>
