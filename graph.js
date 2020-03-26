@@ -51,6 +51,17 @@ getsearchvalue = () =>{
 }
 
 window.onload = function(){
+  const proxyurl = "https://cors-anywhere.herokuapp.com/";
+  const url = 'https://corona.lmao.ninja/countries';
+  fetch(proxyurl + url)
+    .then((resp) => resp.json())
+    .then(function(data) {
+      //addData(data, indexx);
+      localStorage.setItem('corona', JSON.stringify(data));
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
   document.getElementById("previous").disabled = indexx<=1 ? true : false;
   filetercreteria = "cases";
   calll(1, filetercreteria);
@@ -158,17 +169,7 @@ calll = (indexx, filetercreteria)=>{
     chart.render();
   }
 
-  const proxyurl = "https://cors-anywhere.herokuapp.com/";
-  const url = 'https://corona.lmao.ninja/countries';
-  fetch(proxyurl + url)
-    .then((resp) => resp.json())
-    .then(function(data) {
-      addData(data, indexx);
-      localStorage.setItem('corona', JSON.stringify(data));
-    })
-    .catch(function(error) {
-      console.log(error);
-    });
+  addData(dataAfterstore, indexx);
 
 }
 
