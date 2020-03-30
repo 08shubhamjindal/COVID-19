@@ -2,7 +2,7 @@ document.getElementById("ddlitemslist").addEventListener("change", function(){fi
 document.getElementById("next").addEventListener("click", function(){counter(1)});
 document.getElementById("previous").addEventListener("click", function(){counter(-1)});
 document.getElementById("searchbutton").addEventListener("click", function(){getsearchvalue()});
-
+document.getElementById("searchinput").addEventListener("keyup", function(e){ if (e.keyCode == 13) getsearchvalue(); });
 var indexx=1;
 var dataAfterstore = JSON.parse(localStorage.getItem('corona'));
 var filetercreteria = '';
@@ -34,6 +34,7 @@ getsearchvalue = () =>{
   for(var i=0; i<dataAfterstore.length; i++){
       if(searchvalue.toLowerCase()===dataAfterstore[i].country.toLowerCase()){
         index = i;
+        maxi = searchvalue.length;
         break;
       }else{
       var yy = lcs(searchvalue.toLowerCase(), dataAfterstore[i].country.toLowerCase(), searchvalue.length, dataAfterstore[i].country.length);
@@ -56,16 +57,15 @@ window.onload = function(){
   fetch(proxyurl + url)
     .then((resp) => resp.json())
     .then(function(data) {
-      //addData(data, indexx);
       localStorage.setItem('corona', JSON.stringify(data));
+      filetercreteria = "cases";
+      calll(1, filetercreteria);
+      calllpie(0);
     })
     .catch(function(error) {
       console.log(error);
     });
   document.getElementById("previous").disabled = indexx<=1 ? true : false;
-  filetercreteria = "cases";
-  calll(1, filetercreteria);
-  calllpie(0);
 }
 
 calllpie = (index) =>{
@@ -121,7 +121,7 @@ calllpie = (index) =>{
 
 }
 
-calll = (indexx, filetercreteria)=>{
+calll = (indexx, filetercreteria)=> {
   var dataPoints = [];
   var chart = new CanvasJS.Chart("chartContainer", {
     animationEnabled: true,
