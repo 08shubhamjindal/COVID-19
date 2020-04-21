@@ -53,7 +53,7 @@ getsearchvalue = () =>{
 
 window.onload = function(){
   const proxyurl = "https://cors-anywhere.herokuapp.com/";
-  const url = 'https://corona.lmao.ninja/countries';
+  const url = 'https://corona.lmao.ninja/v2/countries';
   fetch(proxyurl + url)
     .then((resp) => resp.json())
     .then(function(data) {
